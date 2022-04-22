@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     [Header("Clips")]
     public AudioClip bounceOffClip, deadClip, winClip, destroyClip, iDestroyClip;
 
+    private bool vibrateOff;
+
     public enum PlayerState
     {
         Prepeare,
@@ -39,15 +41,12 @@ public class Player : MonoBehaviour
         currentBrokenStacks = 0;
     }
 
-
     private void Start()
     {
         totalStacks = FindObjectsOfType<StackController>().Length;
         ChangeParticleSysColor();
+        vibrateOff = EffectManager.instance.isNotVibrating;
     }
-
-
-
 
     void Update()
     {
@@ -89,7 +88,7 @@ public class Player : MonoBehaviour
         {
             rb.velocity = new Vector3(0, 50 * Time.deltaTime * 5, 0);
 
-            PlaySound(bounceOffClip, .35f);
+            PlaySound(bounceOffClip, .15f);
 
             if (collision.gameObject.tag != "Finish")
             {
@@ -105,7 +104,8 @@ public class Player : MonoBehaviour
                 {
                     //Destroy(collision.transform.parent.gameObject);
                     collision.transform.parent.GetComponent<StackController>().ShatterAllParts();
-                    Vibration.Vibrate(5);
+                    if(!vibrateOff)
+                        Vibration.Vibrate(15);
                 }
             }
             else
@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
                 {
                     rb.isKinematic = true;
                     transform.GetChild(0).gameObject.SetActive(false);
-                    PlaySound(deadClip,.6f);
+                    PlaySound(deadClip,.4f);
                     playerState = PlayerState.Died;
                 }
             }
@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Finish" && playerState == PlayerState.Play)
         {
             playerState = PlayerState.Finish;
-            PlaySound(winClip, .4f);
+            PlaySound(winClip, .3f);
             GameObject win = Instantiate(winEffect);
             win.transform.SetParent(Camera.main.transform);
             win.transform.localPosition = Vector3.up * 1.5f;
@@ -168,8 +168,7 @@ public class Player : MonoBehaviour
                     moveRight = true;
             }
         }
-
-}
+    }
 
     private void PlayerPointerCheck()
     {
@@ -248,7 +247,6 @@ public class Player : MonoBehaviour
         splash.GetComponent<SpriteRenderer>().color = transform.GetChild(0).GetComponent<MeshRenderer>().material.color;
     }
 
-
     private void PlaySound(AudioClip audioClip, float volume = .5f)
     {
         SoundManager.instance.PlaySoundFX(audioClip, volume);
@@ -268,6 +266,7 @@ public class Player : MonoBehaviour
             SoundManager.instance.PlaySoundFX(iDestroyClip, .5f);
         }
     }
+
 
     void ChangeParticleSysColor()
     {

@@ -76,8 +76,6 @@ public class LevelSpawner : MonoBehaviour
         }
     }
 
-
-
     private void Update()
     {
         if (Input.GetMouseButtonDown(1))

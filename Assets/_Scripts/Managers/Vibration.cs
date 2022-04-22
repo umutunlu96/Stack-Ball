@@ -13,11 +13,10 @@ public static class Vibration
     public static AndroidJavaObject currentActivity;
     public static AndroidJavaObject vibrator;
 #endif
-    public static bool vibrationOn = true;
 
     public static void Vibrate()
     {
-        if (isAndroid() && vibrationOn)
+        if (isAndroid())
         {
             vibrator.Call("vibrate");
         }
@@ -28,7 +27,7 @@ public static class Vibration
 
     public static void Vibrate(long milliseconds)
     {
-        if (isAndroid() && vibrationOn)
+        if (isAndroid())
         {
             vibrator.Call("vibrate", milliseconds);
         }
@@ -38,7 +37,7 @@ public static class Vibration
 
     public static void Vibrate(long[] pattern, int repeat)
     {
-        if (isAndroid() && vibrationOn)
+        if (isAndroid())
             vibrator.Call("vibrate", pattern, repeat);
         else
             Handheld.Vibrate();
@@ -51,7 +50,7 @@ public static class Vibration
 
     public static void Cancel()
     {
-        if (isAndroid() && vibrationOn)
+        if (isAndroid())
             vibrator.Call("cancel");
     }
 

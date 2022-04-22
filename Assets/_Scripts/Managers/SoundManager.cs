@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     public bool sound = true;
 
@@ -25,16 +25,6 @@ public class SoundManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
-    }
-
-    public void SoundOnOff()
-    {
-        sound = !sound;
-    }
-
-    public void VibrationOnOff()
-    {
-        Vibration.vibrationOn = !Vibration.vibrationOn;
     }
 
     public void PlaySoundFX(AudioClip clip, float volume)

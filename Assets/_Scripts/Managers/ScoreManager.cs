@@ -11,8 +11,8 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
         MakeSingleton();
+        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
     }
 
     private void Update()

@@ -13,7 +13,9 @@ public class GameUI : MonoBehaviour
     private bool btns;
     [Header("Pre Game")]
     public Button soundBtn;
-    public Sprite soundOnSpr, soundOffSpr;
+    public Sprite soundOnImg, soundOffImg;
+    public Button vibrateBtn;
+    public Sprite vibrateOnImg, vibrateOffImg;
 
     [Header("In Game")]
     public Image levelSlider;
@@ -39,7 +41,7 @@ public class GameUI : MonoBehaviour
         currentLevelImg.color = playerMat.color;
         nextLevelImg.color = playerMat.color;
         player = FindObjectOfType<Player>();
-        soundBtn.onClick.AddListener(() => SoundManager.instance.SoundOnOff());
+
     }
 
     private void Start()
@@ -50,15 +52,6 @@ public class GameUI : MonoBehaviour
 
     void Update()
     {
-        CheckSoundButtonSprite();
-
-        if (player.playerState == Player.PlayerState.Prepeare)
-        {
-            if (SoundManager.instance.sound && soundBtn.GetComponent<Image>().sprite != soundOnSpr)
-                soundBtn.GetComponent<Image>().sprite = soundOnSpr;
-            else if (!SoundManager.instance.sound && soundBtn.GetComponent<Image>().sprite != soundOffSpr)
-                soundBtn.GetComponent<Image>().sprite = soundOffSpr;
-        }
 
         if (Input.GetMouseButtonDown(0) && !IgnoreUI() && player.playerState == Player.PlayerState.Prepeare)
         {
@@ -95,16 +88,31 @@ public class GameUI : MonoBehaviour
         }
     }
 
-    private void CheckSoundButtonSprite()   //
-    {
-        if (player.playerState == Player.PlayerState.Prepeare)
-        {
-            if (SoundManager.instance.sound && soundBtn.GetComponent<Image>().sprite != soundOnSpr)
-                soundBtn.GetComponent<Image>().sprite = soundOnSpr;
 
-            else if (!SoundManager.instance.sound && soundBtn.GetComponent<Image>().sprite != soundOffSpr)
-                soundBtn.GetComponent<Image>().sprite = soundOffSpr;
-        }
+    public void ToggleChangeCheck()
+    {
+        if (PlayerPrefs.GetInt("Muted") == 1)
+            soundBtn.image.sprite = soundOffImg;
+        else
+            soundBtn.image.sprite = soundOnImg;
+
+        if (PlayerPrefs.GetInt("Vibrate", 1) == 1)
+            vibrateBtn.image.sprite = vibrateOffImg;
+        else
+            vibrateBtn.image.sprite = vibrateOnImg;
+            
+    }
+
+    public void MuteToggle()
+    {
+        EffectManager.instance.MuteToggle();
+        ToggleChangeCheck();
+    }
+
+    public void VibrationToggle()
+    {
+        EffectManager.instance.VibrationToggle();
+        ToggleChangeCheck();
     }
 
     public void LevelSliderFill(float fillAmount)
@@ -116,6 +124,8 @@ public class GameUI : MonoBehaviour
     {
         btns = !btns;
         allBtns.SetActive(btns);
+        if(btns)
+            ToggleChangeCheck();
     }
 
     private bool IgnoreUI()
