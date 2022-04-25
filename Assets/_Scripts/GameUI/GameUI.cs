@@ -144,6 +144,12 @@ public class GameUI : MonoBehaviour
             ToggleChangeCheck();
     }
 
+    //OYUN ADRESINI EKLE
+    public void RateUs()
+    {
+        Application.OpenURL("");
+    }
+
     private bool IgnoreUI()
     {
         PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
