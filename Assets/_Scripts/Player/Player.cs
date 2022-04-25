@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public AudioClip bounceOffClip, deadClip, winClip, destroyClip, iDestroyClip;
 
     private bool vibrateOff;
+    private Material playerMat;
+
 
     public enum PlayerState
     {
@@ -39,6 +41,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         currentBrokenStacks = 0;
+        StartUpPlayerAsset();
     }
 
     private void Start()
@@ -55,7 +58,6 @@ public class Player : MonoBehaviour
             PlayerPointerCheck();
             FireEffect(invincible);
             InvincibleController(currentTime);
-            //ShakePlayer();
         }
 
         if (playerState == PlayerState.Finish)
@@ -64,6 +66,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void StartUpPlayerAsset()
+    {
+        foreach (Transform obj in transform)
+        {
+            obj.gameObject.SetActive(false);
+        }
+        GameObject child = transform.GetChild(PlayerPrefs.GetInt("PlayerAsset", 0)).gameObject;
+        child.SetActive(true);
+
+        fireEffect = child.transform.GetChild(0).gameObject;
+        fireEffect.GetComponent<ParticleSystem>().Stop();
+
+        ChangePlayerMaterial();
+    }
 
     private void FixedUpdate()
     {
@@ -78,7 +94,7 @@ public class Player : MonoBehaviour
 
         if (rb.velocity.y > 5)
         {
-            rb.velocity = new Vector3(rb.velocity.x, 5, rb.velocity.z);
+            rb.velocity = new Vector3(rb.velocity.x, 7, rb.velocity.z);
         }
     }
 
@@ -86,7 +102,7 @@ public class Player : MonoBehaviour
     {
         if (!smash)
         {
-            rb.velocity = new Vector3(0, 50 * Time.deltaTime * 5, 0);
+            rb.velocity = new Vector3(0, 200 * Time.deltaTime * 5, 0);
 
             PlaySound(bounceOffClip, .15f);
 
@@ -135,6 +151,7 @@ public class Player : MonoBehaviour
             win.transform.SetParent(Camera.main.transform);
             win.transform.localPosition = Vector3.up * 1.5f;
             win.transform.eulerAngles = Vector3.zero;
+            PlayerPrefs.SetInt("BrokenStacks", PlayerPrefs.GetInt("BrokenStacks") + currentBrokenStacks);
         }
     }
 
@@ -143,30 +160,6 @@ public class Player : MonoBehaviour
         if (!smash || collision.gameObject.tag == "Finish")
         {
             rb.velocity = new Vector3(0, 50 * Time.deltaTime * 5, 0);
-        }
-    }
-
-    private void ShakePlayer(float speed = 1)
-    {
-        if (invincible)
-            speed = 2;
-        else
-            speed = 1;
-
-        if (smash)
-        {
-            if (moveRight)
-            {
-                transform.position += Vector3.right * speed * Time.fixedDeltaTime;
-                if (transform.position.x >= .1f)
-                    moveRight = false;
-            }
-            else
-            {
-                transform.position += Vector3.left * speed * Time.fixedDeltaTime;
-                if (transform.position.x <= -.1f)
-                    moveRight = true;
-            }
         }
     }
 
@@ -244,8 +237,24 @@ public class Player : MonoBehaviour
         float randomScale = Random.Range(.18f, .25f);
         splash.transform.localScale = new Vector3(randomScale, randomScale, 1);
         splash.transform.position = new Vector3(transform.position.x, transform.position.y - .22f, transform.position.z);
-        splash.GetComponent<SpriteRenderer>().color = transform.GetChild(0).GetComponent<MeshRenderer>().material.color;
+        //splash.GetComponent<SpriteRenderer>().color = transform.GetChild(0).GetComponent<MeshRenderer>().material.color;
+
+        splash.GetComponent<SpriteRenderer>().color = playerMat.color;
     }
+
+
+    public void ChangePlayerMaterial()
+    {
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            if (gameObject.transform.GetChild(i).gameObject.activeSelf == true)
+            {
+                playerMat = gameObject.transform.GetChild(i).GetComponent<MeshRenderer>().material;
+            }
+        }
+    }
+
+
 
     private void PlaySound(AudioClip audioClip, float volume = .5f)
     {

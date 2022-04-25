@@ -10,7 +10,6 @@ public class LevelSpawner : MonoBehaviour
     public int addOn = 7;
 
     public Material planeMat, baseMat;
-    public MeshRenderer playerMesh;
     private Text scoreText;
     public GameObject[] model;
     
@@ -88,7 +87,6 @@ public class LevelSpawner : MonoBehaviour
     {
         planeMat.color = Random.ColorHSV(0, 1, .5f, 1, 1, 1);
         baseMat.color = planeMat.color + Color.gray + Color.gray;
-        playerMesh.material.color = planeMat.color;
         scoreText.color = planeMat.color;
     }
 

@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 public class GameUI : MonoBehaviour
 {
-    public GameObject homeUI, inGameUI, finishUI, gameOverUI;
+    public GameObject homeUI, inGameUI, finishUI, gameOverUI, shopUI;
     public GameObject allBtns;
     private bool btns;
     [Header("Pre Game")]
@@ -35,12 +35,7 @@ public class GameUI : MonoBehaviour
 
     void Awake()
     {
-        playerMat = FindObjectOfType<Player>().transform.GetChild(0).GetComponent<MeshRenderer>().material;
-        levelSlider.transform.parent.GetComponent<Image>().color = playerMat.color + Color.gray;
-        levelSlider.color = playerMat.color;
-        currentLevelImg.color = playerMat.color;
-        nextLevelImg.color = playerMat.color;
-        player = FindObjectOfType<Player>();
+
 
     }
 
@@ -48,6 +43,26 @@ public class GameUI : MonoBehaviour
     {
         currentLevelText.text = FindObjectOfType<LevelSpawner>().level.ToString();
         nextLevelText.text = FindObjectOfType<LevelSpawner>().level + 1 + "";
+
+        //playerMat = FindObjectOfType<Player>().transform.GetChild(0).GetComponent<MeshRenderer>().material;
+        GetPlayerMesh();
+
+        levelSlider.transform.parent.GetComponent<Image>().color = playerMat.color + Color.gray;
+        levelSlider.color = playerMat.color;
+        currentLevelImg.color = playerMat.color;
+        nextLevelImg.color = playerMat.color;
+        player = FindObjectOfType<Player>();
+    }
+
+    void GetPlayerMesh()
+    {
+        for (int i = 0; i < FindObjectOfType<Player>().transform.childCount; i++)
+        {
+            if (FindObjectOfType<Player>().transform.GetChild(i).gameObject.activeSelf == true)
+            {
+                playerMat = FindObjectOfType<Player>().transform.GetChild(i).GetComponent<MeshRenderer>().material;
+            }
+        }
     }
 
     void Update()
@@ -58,6 +73,7 @@ public class GameUI : MonoBehaviour
             player.playerState = Player.PlayerState.Play;
             homeUI.SetActive(false);
             inGameUI.SetActive(true);
+            shopUI.SetActive(false);
         }
 
         if (player.playerState == Player.PlayerState.Finish)
