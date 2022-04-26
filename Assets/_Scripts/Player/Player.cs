@@ -182,10 +182,7 @@ public class Player : MonoBehaviour
         if (this.currentTime >= 0.3f || invincibleFill.color == Color.red)
             invincibleObj.SetActive(true);
         else
-        {
-            //invincibleObj.SetActive(false);
-
-        }
+            invincibleObj.SetActive(false);
 
         if (this.currentTime >= 1)
         {
