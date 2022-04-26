@@ -3634,8 +3634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785e4f1f2ab28dd46a2c3a06f42a4f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color1: {r: 0.058823533, g: 0.8078432, b: 0.92549026, a: 1}
-  color2: {r: 0.8679245, g: 0.86149114, b: 0.64275545, a: 1}
+  colorUp: {r: 0.8490566, g: 0.38848346, b: 0.38848346, a: 1}
+  colorDown: {r: 0.844901, g: 0.8584906, b: 0.5061855, a: 1}
   rate: 0
 --- !u!1 &1035353530
 GameObject:
@@ -5192,6 +5192,18 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6461971685472942107, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461971685472942107, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461971685472942107, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461971685472942107, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -5241,6 +5253,30 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 6a600b08fbfd7a345bbc15156be2a4a0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
+--- !u!1 &1553563220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6461971685472942111, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
+  m_PrefabInstance: {fileID: 1553563219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1553563221
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553563220}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1f63ed927f5c8e940b399b0e877615be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1563004201
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraBackgroundLerp : MonoBehaviour
 {
-    public Color color1;
-    public Color color2;
+    public Color colorUp;
+    public Color colorDown;
 
     private Camera cam;
     private Player player;
@@ -27,6 +27,11 @@ public class CameraBackgroundLerp : MonoBehaviour
     void Update()
     {
         rate = (float)player.currentBrokenStacks / (float)player.totalStacks;
-        cam.backgroundColor = Color.Lerp(color1, color2, rate);
+        cam.backgroundColor = Color.Lerp(colorUp, colorDown, rate);
+    }
+
+    public void SetColors(Color colorUp)
+    {
+        this.colorUp = colorUp;
     }
 }

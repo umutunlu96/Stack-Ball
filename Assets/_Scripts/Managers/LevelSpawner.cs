@@ -20,10 +20,17 @@ public class LevelSpawner : MonoBehaviour
     private GameObject temp1, temp2;
     float i = 0;
 
+    private CameraBackgroundLerp camBackround;
+    private Player player;
+    private GameUI gameUi;
+
     void Awake()
     {
         scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
         level = PlayerPrefs.GetInt("Level", 1);
+        camBackround = GameObject.FindObjectOfType<CameraBackgroundLerp>();
+        player = GameObject.FindObjectOfType<Player>();
+        gameUi = GameObject.FindObjectOfType<GameUI>();
 
         if (level > 9)
             addOn = 0;
@@ -87,7 +94,10 @@ public class LevelSpawner : MonoBehaviour
     {
         planeMat.color = Random.ColorHSV(0, 1, .5f, 1, 1, 1);
         baseMat.color = planeMat.color + Color.gray + Color.gray;
+        camBackround.SetColors(planeMat.color + new Color(.25f,.25f,.25f,1));
+        player.ChangeStartAssetColor(planeMat.color - Color.gray);
         scoreText.color = planeMat.color;
+        gameUi.SetSliderColor();
     }
 
     void ModelSelection()

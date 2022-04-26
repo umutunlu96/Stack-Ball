@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
     private bool vibrateOff;
     private Material playerMat;
-
+    private Animator anim;
 
     public enum PlayerState
     {
@@ -42,10 +42,12 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         currentBrokenStacks = 0;
         StartUpPlayerAsset();
+        anim = GetComponent<Animator>();
     }
 
     private void Start()
     {
+        anim.SetBool("Scale", true);
         totalStacks = FindObjectsOfType<StackController>().Length;
         ChangeParticleSysColor();
         vibrateOff = EffectManager.instance.isNotVibrating;
@@ -83,14 +85,16 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         if (playerState == PlayerState.Play)
         {
             if (Input.GetMouseButton(0))
             {
+                anim.SetBool("Scale", false);
                 smash = true;
                 rb.velocity = new Vector3(0, -100 * Time.fixedDeltaTime * 7, 0);
             }
+            else
+                anim.SetBool("Scale", true);
         }
 
         if (rb.velocity.y > 5)
@@ -243,6 +247,11 @@ public class Player : MonoBehaviour
         splash.GetComponent<SpriteRenderer>().color = playerMat.color;
     }
 
+    public void ChangeStartAssetColor(Color color1)
+    {
+        if (PlayerPrefs.GetInt("PlayerAsset") == 0)
+            transform.GetChild(0).GetComponent<MeshRenderer>().material.color = color1;
+    }
 
     public void ChangePlayerMaterial()
     {

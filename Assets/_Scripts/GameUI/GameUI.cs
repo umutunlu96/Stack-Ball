@@ -35,7 +35,9 @@ public class GameUI : MonoBehaviour
 
     void Awake()
     {
+        player = FindObjectOfType<Player>();
 
+        GetPlayerMesh();
 
     }
 
@@ -43,16 +45,26 @@ public class GameUI : MonoBehaviour
     {
         currentLevelText.text = FindObjectOfType<LevelSpawner>().level.ToString();
         nextLevelText.text = FindObjectOfType<LevelSpawner>().level + 1 + "";
+        SetSliderColor();
+    }
 
-        //playerMat = FindObjectOfType<Player>().transform.GetChild(0).GetComponent<MeshRenderer>().material;
-        GetPlayerMesh();
-
+    public void SetSliderColor()
+    {
         levelSlider.transform.parent.GetComponent<Image>().color = playerMat.color + Color.gray;
         levelSlider.color = playerMat.color;
         currentLevelImg.color = playerMat.color;
         nextLevelImg.color = playerMat.color;
-        player = FindObjectOfType<Player>();
+
+        var tempColor1 = currentLevelImg.color;
+        tempColor1.a = 1;
+        currentLevelImg.color = tempColor1;
+
+
+        var tempColor2 = nextLevelImg.color;
+        tempColor2.a = 1;
+        nextLevelImg.color = tempColor2;
     }
+
 
     void GetPlayerMesh()
     {
