@@ -1021,7 +1021,7 @@ MonoBehaviour:
   inGameUI: {fileID: 2911080260770005140}
   finishUI: {fileID: 2911080260632697131}
   gameOverUI: {fileID: 2911080260127242519}
-  shopUI: {fileID: 0}
+  shopUI: {fileID: 7002272789012122072, guid: 1a46c1bbc2f2469469e16599cccacee1, type: 3}
   allBtns: {fileID: 2911080260415934321}
   soundBtn: {fileID: 2911080259346688912}
   soundOnImg: {fileID: 21300000, guid: 6f48359c3d0c09f4babc8db5af279e37, type: 3}
