@@ -71,4 +71,9 @@ public class ShopUI : MonoBehaviour
             Assets[index].GetComponent<CanvasGroup>().alpha = .7f;
         }
     }
+
+    public void TriggeUIAnim(GameObject obj)
+    {
+        obj.GetComponent<Animator>().SetTrigger("ClickAnim");
+    }
 }
