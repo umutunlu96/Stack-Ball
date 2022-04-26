@@ -43,7 +43,6 @@ public class Player : MonoBehaviour
         currentBrokenStacks = 0;
         StartUpPlayerAsset();
         anim = GetComponent<Animator>();
-        PlayerPrefs.SetInt("BrokenStacks", 2000);
     }
 
     private void Start()

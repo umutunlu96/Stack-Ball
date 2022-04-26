@@ -9,7 +9,7 @@ public class LevelSpawner : MonoBehaviour
     public int level = 1;
     public int addOn = 7;
 
-    public Material planeMat, baseMat;
+    public Material planeMat, poleMat;
     private Text scoreText;
     public GameObject[] model;
     
@@ -93,7 +93,7 @@ public class LevelSpawner : MonoBehaviour
     void ChangeColorOfBrics()
     {
         planeMat.color = Random.ColorHSV(0, 1, .5f, 1, 1, 1);
-        baseMat.color = planeMat.color + Color.gray + Color.gray;
+        poleMat.color = planeMat.color + Color.gray;
         camBackround.SetColors(planeMat.color + new Color(.25f,.25f,.25f,1));
         player.ChangeStartAssetColor(planeMat.color - Color.gray);
         scoreText.color = planeMat.color;
