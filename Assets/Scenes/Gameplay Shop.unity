@@ -906,7 +906,7 @@ MonoBehaviour:
   level: 50
   addOn: 7
   planeMat: {fileID: 2100000, guid: 08ba0d951780d1d4c927e110c9d952d2, type: 2}
-  baseMat: {fileID: 2100000, guid: e3bd4246a16cd5c49968223f6e8f335f, type: 2}
+  poleMat: {fileID: 2100000, guid: e3bd4246a16cd5c49968223f6e8f335f, type: 2}
   model:
   - {fileID: 4083092216702661192, guid: 4090eb26e9a6243499e279e647626f17, type: 3}
   - {fileID: 992441524142787588, guid: b44c72689c6c52746828431f75d73de2, type: 3}
@@ -1301,6 +1301,10 @@ PrefabInstance:
       propertyPath: shopUI
       value: 
       objectReference: {fileID: 889350230}
+    - target: {fileID: 2911080260324593737, guid: 0b938d3fa1afa5543ba49105c94cb49b, type: 3}
+      propertyPath: playerMat
+      value: 
+      objectReference: {fileID: 2100000, guid: f2b29b366d947264386d6843fb283c70, type: 2}
     - target: {fileID: 2911080260324593842, guid: 0b938d3fa1afa5543ba49105c94cb49b, type: 3}
       propertyPath: m_Name
       value: GameUI

@@ -97,7 +97,6 @@ public class LevelSpawner : MonoBehaviour
         camBackround.SetColors(planeMat.color + new Color(.25f,.25f,.25f,1));
         player.ChangeStartAssetColor(planeMat.color - Color.gray);
         scoreText.color = planeMat.color;
-        gameUi.SetSliderColor();
     }
 
     void ModelSelection()
