@@ -3225,11 +3225,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835213549}
   m_CullTransparentMesh: 1
---- !u!198 &878300736 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6461971685433624194, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
-  m_PrefabInstance: {fileID: 1553563219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &889350230
 GameObject:
   m_ObjectHideFlags: 0
@@ -3639,8 +3634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785e4f1f2ab28dd46a2c3a06f42a4f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color1: {r: 0.6131319, g: 0.13034001, b: 0.9528302, a: 1}
-  color2: {r: 0.8207547, g: 0.16647384, b: 0.6792269, a: 1}
+  color1: {r: 0.058823533, g: 0.8078432, b: 0.92549026, a: 1}
+  color2: {r: 0.8679245, g: 0.86149114, b: 0.64275545, a: 1}
   rate: 0
 --- !u!1 &1035353530
 GameObject:
@@ -5185,18 +5180,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6461971685472942106, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
-      propertyPath: fireEffect
-      value: 
-      objectReference: {fileID: 1931791933}
-    - target: {fileID: 6461971685472942106, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
-      propertyPath: dustParticle
-      value: 
-      objectReference: {fileID: 878300736}
-    - target: {fileID: 6461971685472942106, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
-      propertyPath: fireParticle
-      value: 
-      objectReference: {fileID: 1931791936}
-    - target: {fileID: 6461971685472942106, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
       propertyPath: invincibleObj
       value: 
       objectReference: {fileID: 909560158}
@@ -5204,10 +5187,6 @@ PrefabInstance:
       propertyPath: invincibleFill
       value: 
       objectReference: {fileID: 641035560}
-    - target: {fileID: 6461971685472942106, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
-      propertyPath: orangeParticle
-      value: 
-      objectReference: {fileID: 2053309269}
     - target: {fileID: 6461971685472942107, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -5256,10 +5235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6461971685472942111, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 6461971686225419939, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a600b08fbfd7a345bbc15156be2a4a0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
 --- !u!1 &1563004201
@@ -6622,16 +6601,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &1931791933 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6461971685050176803, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
-  m_PrefabInstance: {fileID: 1553563219}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1931791936 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6461971685050176800, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
-  m_PrefabInstance: {fileID: 1553563219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1948318587
 GameObject:
   m_ObjectHideFlags: 0
@@ -6932,11 +6901,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006330469}
   m_CullTransparentMesh: 1
---- !u!198 &2053309269 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6461971684300852720, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
-  m_PrefabInstance: {fileID: 1553563219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2085506856
 GameObject:
   m_ObjectHideFlags: 0

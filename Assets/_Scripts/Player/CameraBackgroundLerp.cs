@@ -21,6 +21,7 @@ public class CameraBackgroundLerp : MonoBehaviour
     {
         //cam.clearFlags = CameraClearFlags.SolidColor;
         player = FindObjectOfType<Player>();
+
     }
 
     void Update()

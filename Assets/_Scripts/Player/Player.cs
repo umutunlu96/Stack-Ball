@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         if (playerState == PlayerState.Play)
         {
             if (Input.GetMouseButton(0))
