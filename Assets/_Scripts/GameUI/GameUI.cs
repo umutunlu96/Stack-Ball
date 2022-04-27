@@ -110,6 +110,7 @@ public class GameUI : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                PlayerPrefs.SetInt("AdShowCount", PlayerPrefs.GetInt("AdShowCount") + 1);
                 ScoreManager.instance.ResetScore();
                 SceneManager.LoadScene(0);
             }

@@ -226,6 +226,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             FindObjectOfType<LevelSpawner>().NextLevel();
+            Time.timeScale = 1;
         }
     }
 
@@ -263,8 +264,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-
-
 
     private void PlaySound(AudioClip audioClip, float volume = .5f)
     {

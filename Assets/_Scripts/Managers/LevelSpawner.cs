@@ -23,14 +23,17 @@ public class LevelSpawner : MonoBehaviour
     private CameraBackgroundLerp camBackround;
     private Player player;
     private GameUI gameUi;
+    private AdController adController;
 
     void Awake()
     {
+        Time.timeScale = 1;
         scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
         level = PlayerPrefs.GetInt("Level", 1);
         camBackround = GameObject.FindObjectOfType<CameraBackgroundLerp>();
         player = GameObject.FindObjectOfType<Player>();
         gameUi = GameObject.FindObjectOfType<GameUI>();
+        adController = GameObject.FindObjectOfType<AdController>();
 
         if (level > 9)
             addOn = 0;
@@ -129,7 +132,21 @@ public class LevelSpawner : MonoBehaviour
 
     public void NextLevel()
     {
-        PlayerPrefs.SetInt("Level", level + 1);
+        if (!adController.adShow)
+        {
+            PlayerPrefs.SetInt("Level", level + 1);
+            PlayerPrefs.SetInt("AdShowCount", PlayerPrefs.GetInt("AdShowCount") + 1);
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Level", level + 1);
+            PlayerPrefs.SetInt("AdShowCount", PlayerPrefs.GetInt("AdShowCount") + 1);
+        }
+    }
+
+    public void AfterAdNextLevel()
+    {
         SceneManager.LoadScene(0);
     }
 }
