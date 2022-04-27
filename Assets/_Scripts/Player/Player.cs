@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     private bool vibrateOff;
     private Material playerMat;
     private Animator anim;
+    private AdController adController;
 
     public enum PlayerState
     {
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour
         totalStacks = FindObjectsOfType<StackController>().Length;
         ChangeParticleSysColor();
         vibrateOff = EffectManager.instance.isNotVibrating;
+        adController = GameObject.FindObjectOfType<AdController>();
     }
 
     void Update()
@@ -223,7 +225,7 @@ public class Player : MonoBehaviour
 
     private void FinishStateController()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && adController.adState == AdController.AdState.NotShowAdd)
         {
             FindObjectOfType<LevelSpawner>().NextLevel();
             Time.timeScale = 1;

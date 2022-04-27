@@ -132,17 +132,9 @@ public class LevelSpawner : MonoBehaviour
 
     public void NextLevel()
     {
-        if (!adController.adShow)
-        {
-            PlayerPrefs.SetInt("Level", level + 1);
-            PlayerPrefs.SetInt("AdShowCount", PlayerPrefs.GetInt("AdShowCount") + 1);
-            SceneManager.LoadScene(0);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("Level", level + 1);
-            PlayerPrefs.SetInt("AdShowCount", PlayerPrefs.GetInt("AdShowCount") + 1);
-        }
+        PlayerPrefs.SetInt("Level", level + 1);
+        PlayerPrefs.SetInt("AdShowCount", PlayerPrefs.GetInt("AdShowCount") + 1);
+        SceneManager.LoadScene(0);
     }
 
     public void AfterAdNextLevel()

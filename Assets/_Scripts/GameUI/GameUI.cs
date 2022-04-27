@@ -32,6 +32,7 @@ public class GameUI : MonoBehaviour
 
     private Player player;
     private Material playerMat;
+    private AdController adController;
 
     void Awake()
     {
@@ -46,6 +47,7 @@ public class GameUI : MonoBehaviour
         currentLevelText.text = FindObjectOfType<LevelSpawner>().level.ToString();
         nextLevelText.text = FindObjectOfType<LevelSpawner>().level + 1 + "";
         SetSliderColor();
+        adController = GameObject.FindObjectOfType<AdController>();
     }
 
     public void SetSliderColor()
@@ -108,7 +110,7 @@ public class GameUI : MonoBehaviour
             gameOverScoreText.text = ScoreManager.instance.score.ToString();
             gameOverBestText.text = PlayerPrefs.GetInt("HighScore").ToString();
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && adController.adState == AdController.AdState.NotShowAdd)
             {
                 PlayerPrefs.SetInt("AdShowCount", PlayerPrefs.GetInt("AdShowCount") + 1);
                 ScoreManager.instance.ResetScore();

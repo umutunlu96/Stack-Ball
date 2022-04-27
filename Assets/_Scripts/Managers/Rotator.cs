@@ -5,10 +5,17 @@ using UnityEngine;
 public class Rotator : MonoBehaviour
 {
     public float speed = 100;
+    private Player player;
+
+    private void Start()
+    {
+        player = GameObject.FindObjectOfType<Player>();
+    }
 
     void Update()
     {
-        Rotate(speed);
+        if(player.playerState != Player.PlayerState.Died)
+            Rotate(speed);
     }
 
     public void Rotate(float speed)

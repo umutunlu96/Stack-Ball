@@ -9,9 +9,7 @@ public class AdManager : MonoBehaviour
     private RewardedAd rewardedAd;
 
     public static AdManager instance;
-
-    private int playedLevel;
-    private LevelSpawner levelSpawner;
+    private AdController adController;
 
     private void Awake()
     {
@@ -29,7 +27,7 @@ public class AdManager : MonoBehaviour
     void Start()
     {
         MobileAds.Initialize(InitializationStatus => { });
-        levelSpawner = GameObject.FindObjectOfType<LevelSpawner>();
+        adController = GameObject.FindObjectOfType<AdController>();
     }
 
     private AdRequest CreateAdRequest()
@@ -66,7 +64,7 @@ public class AdManager : MonoBehaviour
     private void InterstitialAd_OnAdClosed(object sender, EventArgs e)
     {
         PlayerPrefs.SetInt("AdShowCount", 0);
-        levelSpawner.AfterAdNextLevel();
+        adController.adState = AdController.AdState.NotShowAdd;
     }
 
     public void ShowIntertial()
