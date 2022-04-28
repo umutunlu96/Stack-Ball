@@ -76,4 +76,19 @@ public class ShopUI : MonoBehaviour
     {
         obj.GetComponent<Animator>().SetTrigger("ClickAnim");
     }
+
+    public void OpenNextBoxReward()
+    {
+        for (int i = 0; i < assetGoals.Length; i++)
+        {
+            if (totalBrokenStacks < assetGoals[i])
+            {
+                totalBrokenStacks = assetGoals[i];
+                PlayerPrefs.SetInt("BrokenStacks", totalBrokenStacks);
+                break;
+            }
+        }
+
+        AssetSliderFillAmount();
+    }
 }

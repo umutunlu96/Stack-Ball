@@ -10,6 +10,7 @@ public class AdController : MonoBehaviour
     public bool adShow; //Ads
     public bool rewardRequest;
     private Player player;
+    private AdManager adManager;
 
     public enum AdState
     {
@@ -17,7 +18,14 @@ public class AdController : MonoBehaviour
         ShowAd
     }
 
+    public enum BannerState
+    {
+        NotShowBanner,
+        ShowBanner
+    }
+
     public AdState adState = AdState.NotShowAdd;
+    public BannerState bannerState = BannerState.NotShowBanner;
 
     private void Awake()
     {
@@ -27,6 +35,7 @@ public class AdController : MonoBehaviour
 
     private void Start()
     {
+        adManager = GameObject.FindObjectOfType<AdManager>();
         InstertialAdCheck(SHOWADS);
     }
 
@@ -36,6 +45,21 @@ public class AdController : MonoBehaviour
         {
             ShowInstertialAd(adShow);
         }
+
+        if (player.playerState == Player.PlayerState.Play && bannerState == BannerState.NotShowBanner)
+        {
+            adManager.RequestBanner();
+            bannerState = BannerState.ShowBanner;
+            print("Show Banner");
+        }
+
+        else if (player.playerState != Player.PlayerState.Play && bannerState == BannerState.ShowBanner)
+        {
+            adManager.DestroyBanner();
+            bannerState = BannerState.NotShowBanner;
+            print("Destroy Banner");
+        }
+
     }
 
     private void InstertialAdCheck(bool showAds)
@@ -63,13 +87,9 @@ public class AdController : MonoBehaviour
         }
     }
 
-    private void RewardRequest(bool rewardRequest)
+    public void RewardRequest()
     {
-        if (rewardRequest)
-        {
-            AdManager.instance.RequestRewarded();
-            this.rewardRequest = false;
-        }
+        AdManager.instance.RequestRewarded();
     }
 
     public void RewardShow()
