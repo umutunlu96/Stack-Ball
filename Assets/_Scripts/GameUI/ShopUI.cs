@@ -15,8 +15,6 @@ public class ShopUI : MonoBehaviour
     private void Awake()
     {
         player = FindObjectOfType<Player>();
-        PlayerPrefs.SetInt("Level", 131);
-        PlayerPrefs.SetInt("BrokenStacks", 99999);
     }
 
     private void Start()

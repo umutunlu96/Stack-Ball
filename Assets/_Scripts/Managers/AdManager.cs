@@ -122,7 +122,7 @@ public class AdManager : MonoBehaviour
     public void RequestRewarded()
     {
         string adUnitId = "ca-app-pub-3940256099942544/5224354917";         //Test ID
-        //string adUnitId = "ca-app-pub-4762392528800851/2135067925";         //Gercek ID
+        //string adUnitId = "ca-app-pub-4762392528800851/7206149945";         //Gercek ID
 
         if (this.rewardedAd != null)
             this.rewardedAd.Destroy();

@@ -14,11 +14,7 @@ public class Player : MonoBehaviour
     public GameObject invincibleObj;
     public Image invincibleFill;
     public GameObject fireEffect, winEffect, splashEffect;
-    private bool moveRight;
-    [Header("Particles")]
-    public ParticleSystem fireParticle;
-    public ParticleSystem orangeParticle;
-    public ParticleSystem dustParticle;
+
     [Header("Clips")]
     public AudioClip bounceOffClip, deadClip, winClip, destroyClip, iDestroyClip;
 
@@ -50,7 +46,6 @@ public class Player : MonoBehaviour
     {
         anim.SetBool("Scale", true);
         totalStacks = FindObjectsOfType<StackController>().Length;
-        ChangeParticleSysColor();
         vibrateOff = EffectManager.instance.isNotVibrating;
         adController = GameObject.FindObjectOfType<AdController>();
     }
@@ -80,7 +75,7 @@ public class Player : MonoBehaviour
         child.SetActive(true);
 
         fireEffect = child.transform.GetChild(0).gameObject;
-        fireEffect.GetComponent<ParticleSystem>().Stop();
+        fireEffect.SetActive(false);
 
         ChangePlayerMaterial();
     }
@@ -287,10 +282,4 @@ public class Player : MonoBehaviour
         }
     }
 
-
-    void ChangeParticleSysColor()
-    {
-        fireParticle.Stop();
-        fireParticle.startColor = transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color;
-    }
 }
