@@ -2004,12 +2004,9 @@ MonoBehaviour:
   totalStacks: 0
   invincibleObj: {fileID: 0}
   invincibleFill: {fileID: 0}
-  fireEffect: {fileID: 0}
+  fireEffect: {fileID: 4324688369086401892}
   winEffect: {fileID: 421167128562123445, guid: 78b10f4e42074744ea3a4c883777e1bf, type: 3}
   splashEffect: {fileID: 1811373762065970017, guid: 0a05de5742d4264418255ad0caf2f85e, type: 3}
-  fireParticle: {fileID: 0}
-  orangeParticle: {fileID: 0}
-  dustParticle: {fileID: 0}
   bounceOffClip: {fileID: 8300000, guid: 12af9d4dd8824d546970d054aac7ac89, type: 3}
   deadClip: {fileID: 8300000, guid: 1124915e210fd1d47b454812d12fa909, type: 3}
   winClip: {fileID: 8300000, guid: 217cd410471f42a45a6d16a1880c4913, type: 3}
@@ -2641,6 +2638,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c7cdf2db7b267949a61f4b0371758bf, type: 3}
+--- !u!1 &4324688369086401892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2825752883595426703, guid: 3c7cdf2db7b267949a61f4b0371758bf, type: 3}
+  m_PrefabInstance: {fileID: 1960040478226593515}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8359131286818669814 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8012730517352575517, guid: 3c7cdf2db7b267949a61f4b0371758bf, type: 3}

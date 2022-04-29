@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -858,14 +858,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6461971685472942106, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
-      propertyPath: fireEffect
-      value: 
-      objectReference: {fileID: 1712723646}
-    - target: {fileID: 6461971685472942106, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
-      propertyPath: fireParticle
-      value: 
-      objectReference: {fileID: 1712723649}
-    - target: {fileID: 6461971685472942106, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
       propertyPath: invincibleObj
       value: 
       objectReference: {fileID: 909560158}
@@ -923,16 +915,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
---- !u!1 &1712723646 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4324688369086401892, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
-  m_PrefabInstance: {fileID: 1553563219}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1712723649 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4835378247384518441, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
-  m_PrefabInstance: {fileID: 1553563219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1761931299
 GameObject:
   m_ObjectHideFlags: 0
