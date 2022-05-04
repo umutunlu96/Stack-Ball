@@ -2,21 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
-[RequireComponent(typeof(Camera))]
 public class CameraScaler : MonoBehaviour
 {
-    private float targetX, targetY;
-    private float orthoSize;
+    private float targetX = 1080, targetY = 1920;
 
     private void Awake()
     {
-        targetX = 1080; targetY = 1920;
+        ScaleCamera();
     }
 
-
-
-    private void Update()
+    private void ScaleCamera()
     {
         float screenRatio = (float)Screen.width / (float)Screen.height;
         float targetRatio = targetX / targetY;
