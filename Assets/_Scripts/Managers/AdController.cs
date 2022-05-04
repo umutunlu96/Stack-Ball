@@ -29,6 +29,7 @@ public class AdController : MonoBehaviour
 
     private void Awake()
     {
+        //PlayerPrefs.SetInt("AdShowCount", 4);
         adShowCount = PlayerPrefs.GetInt("AdShowCount", 0);
         player = FindObjectOfType<Player>();
     }
@@ -67,9 +68,10 @@ public class AdController : MonoBehaviour
         if (showAds)
         {
             adShowCount = PlayerPrefs.GetInt("AdShowCount");
-
+            print("Ins. Ad Check");
             if (adShowCount > 3)
             {
+                print("Ins. Ad Check ok will shown");
                 AdManager.instance.RequestIntertial();
                 adState = AdState.ShowAd;
                 adShow = true;
@@ -82,8 +84,11 @@ public class AdController : MonoBehaviour
         if (adShow)
         {
             AdManager.instance.ShowIntertial();
-            this.adShow = false;
             PlayerPrefs.SetInt("AdShowCount", 0);
+            //this.adShow = false;
+            print("Ins. Ad show");
+
+            //adState = AdState.NotShowAdd;
         }
     }
 

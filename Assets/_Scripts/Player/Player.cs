@@ -223,7 +223,7 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && adController.adState == AdController.AdState.NotShowAdd)
         {
             FindObjectOfType<LevelSpawner>().NextLevel();
-            Time.timeScale = 1;
+            //Time.timeScale = 1;
         }
     }
 

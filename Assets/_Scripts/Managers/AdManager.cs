@@ -89,10 +89,19 @@ public class AdManager : MonoBehaviour
         this.interstitialAd.OnAdFailedToLoad += InterstitialAd_OnAdFailedToLoad;
 
         this.interstitialAd.OnAdClosed += InterstitialAd_OnAdClosed;
+
+        this.interstitialAd.OnAdFailedToShow += ÝnterstitialAd_OnAdFailedToShow;
+        print("Instertial Requested");
+    }
+
+    private void ÝnterstitialAd_OnAdFailedToShow(object sender, AdErrorEventArgs e)
+    {
+        adController.adState = AdController.AdState.NotShowAdd;
     }
 
     private void InterstitialAd_OnAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)
     {
+        print("Instertial Failed to load");
         RequestIntertial();
     }
 
@@ -100,6 +109,7 @@ public class AdManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("AdShowCount", 0);
         adController.adState = AdController.AdState.NotShowAdd;
+        print("Instertial ad closed");
     }
 
     public void ShowIntertial()
@@ -107,6 +117,8 @@ public class AdManager : MonoBehaviour
         if (this.interstitialAd.IsLoaded())
         {
             interstitialAd.Show();
+            adController.adState = AdController.AdState.NotShowAdd;
+            print("Instertial showed");
         }
 
         else
@@ -152,6 +164,7 @@ public class AdManager : MonoBehaviour
     {
         print("Rewarded player");
         shopUi.OpenNextBoxReward();
+        RequestRewarded();
     }
 
     public void ShowRewarded()
@@ -160,7 +173,6 @@ public class AdManager : MonoBehaviour
         {
             rewardedAd.Show();
         }
-
         else
         {
             print("rewardedAd not loaded yet.");
