@@ -159,10 +159,9 @@ public class GameUI : MonoBehaviour
             ToggleChangeCheck();
     }
 
-    //OYUN ADRESINI EKLE
     public void RateUs()
     {
-        Application.OpenURL("");
+        Application.OpenURL("https://play.google.com/store/apps/details?id=com.BetaTechGames.StackBall");
     }
 
     private bool IgnoreUI()
