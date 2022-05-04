@@ -141,7 +141,6 @@ public class AdManager : MonoBehaviour
 
     private void RewardedAd_OnAdLoaded(object sender, EventArgs e)
     {
-        ShowRewarded();
         print("Reward onloaded");
     }
     private void RewardedAd_OnAdFailedToLoad(object sender, AdFailedToLoadEventArgs e)

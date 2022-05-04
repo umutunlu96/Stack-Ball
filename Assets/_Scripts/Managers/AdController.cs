@@ -68,7 +68,7 @@ public class AdController : MonoBehaviour
         {
             adShowCount = PlayerPrefs.GetInt("AdShowCount");
 
-            if (adShowCount >= 3)
+            if (adShowCount > 3)
             {
                 AdManager.instance.RequestIntertial();
                 adState = AdState.ShowAd;
