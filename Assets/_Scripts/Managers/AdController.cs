@@ -29,7 +29,6 @@ public class AdController : MonoBehaviour
 
     private void Awake()
     {
-        //PlayerPrefs.SetInt("AdShowCount", 4);
         adShowCount = PlayerPrefs.GetInt("AdShowCount", 0);
         player = FindObjectOfType<Player>();
     }

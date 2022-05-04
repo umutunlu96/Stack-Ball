@@ -14,7 +14,7 @@ public class Rotator : MonoBehaviour
 
     void Update()
     {
-        //if(player.playerState != Player.PlayerState.Died)
+        if (player.playerState != Player.PlayerState.Died)
             Rotate(speed);
     }
 
