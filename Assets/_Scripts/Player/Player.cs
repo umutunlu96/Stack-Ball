@@ -225,6 +225,16 @@ public class Player : MonoBehaviour
             FindObjectOfType<LevelSpawner>().NextLevel();
             //Time.timeScale = 1;
         }
+        if (adController.adState != AdController.AdState.NotShowAdd)
+        {
+            StartCoroutine(NoInternetConnectionFix());
+        }
+    }
+
+    IEnumerator NoInternetConnectionFix()
+    {
+        yield return new WaitForSeconds(2f);
+        adController.adState = AdController.AdState.NotShowAdd;
     }
 
     private void CheckCurrentTime(float scaler)

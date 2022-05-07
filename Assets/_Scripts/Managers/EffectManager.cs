@@ -31,6 +31,7 @@ public class EffectManager : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindObjectOfType<Player>();
         isMuted = PlayerPrefs.GetInt("Muted") == 1;
         SoundManager.instance.audioSource.mute = isMuted;
         isNotVibrating = PlayerPrefs.GetInt("Vibrate", 1) == 1;
