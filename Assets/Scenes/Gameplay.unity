@@ -871,6 +871,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6461971685472942106, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
+      propertyPath: FinishUI
+      value: 
+      objectReference: {fileID: 2911080260553845194}
+    - target: {fileID: 6461971685472942106, guid: afb478efa9722b44dac8e177faebb44d, type: 3}
       propertyPath: invincibleObj
       value: 
       objectReference: {fileID: 909560158}
@@ -1276,3 +1280,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b938d3fa1afa5543ba49105c94cb49b, type: 3}
+--- !u!1 &2911080260553845194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2911080260632697131, guid: 0b938d3fa1afa5543ba49105c94cb49b, type: 3}
+  m_PrefabInstance: {fileID: 2911080260553845193}
+  m_PrefabAsset: {fileID: 0}

@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     [Header("Clips")]
     public AudioClip bounceOffClip, deadClip, winClip, destroyClip, iDestroyClip;
 
-    private bool vibrateOff;
+    [HideInInspector]public bool vibrateOff;
     private Material playerMat;
     private Animator anim;
     private AdController adController;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EffectManager : MonoBehaviour
 {
     public static EffectManager instance;
+    private Player player;
 
     [Header("Sound Options")]
     public bool isMuted;
@@ -46,5 +47,6 @@ public class EffectManager : MonoBehaviour
     {
         isNotVibrating = !isNotVibrating;
         PlayerPrefs.SetInt("Vibrate", isNotVibrating ? 1 : 0);
+        player.vibrateOff = isNotVibrating;
     }
 }
